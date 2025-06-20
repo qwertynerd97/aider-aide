@@ -8,6 +8,12 @@ if [[ "$CURRENT_BRANCH" != feature-* ]]; then
   # List all branches that start with "feature-"
   FEATURE_BRANCHES=$(git branch | grep '^  feature-' | sed 's/^  //')
 
+  # Check if there are any feature branches
+  if [ -z "$FEATURE_BRANCHES" ]; then
+    echo "No feature branches found. Please start a new feature first."
+    exit 1
+  fi
+
   echo "Current branch is not a feature branch. Please select a feature branch:"
   echo "$FEATURE_BRANCHES"
 
