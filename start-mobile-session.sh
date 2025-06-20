@@ -39,7 +39,7 @@ echo "Created and switched to new branch: $SESSION_BRANCH"
 export OLLAMA_API_BASE=http://$HOSTNAME:11434
 
 # Open aider in mobile notification mode using devstral AI
-aider --mobile-notification-mode --ai devstral
+aider --model ollama_chat/devstral:latest --notifications
 
 # Add planning/tasks.md to aider and have it tell you the open tasks
 aider add planning/tasks.md
