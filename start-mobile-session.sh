@@ -39,7 +39,4 @@ echo "Created and switched to new branch: $SESSION_BRANCH"
 export OLLAMA_API_BASE=http://$HOSTNAME:11434
 
 # Open aider in mobile notification mode using devstral AI
-aider --model ollama_chat/devstral:latest --notifications
-
-# Load aider commands from template file
-source mobile-session.templates/load-commands.md
+aider --model ollama_chat/devstral:latest --notifications --load mobile-session.templates/load-commands.md
