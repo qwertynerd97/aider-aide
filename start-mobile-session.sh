@@ -1,12 +1,28 @@
 #!/bin/bash
 
-# Check if feature branch is provided as an argument
-if [ -z "$1" ]; then
-  echo "Usage: $0 <feature-branch>"
-  exit 1
+# Get the current branch name
+CURRENT_BRANCH=$(git symbolic-ref --short HEAD)
+
+# Check if the current branch is a feature branch
+if [[ "$CURRENT_BRANCH" != feature-* ]]; then
+  # List all branches that start with "feature-"
+  FEATURE_BRANCHES=$(git branch | grep '^  feature-' | sed 's/^  //')
+
+  echo "Current branch is not a feature branch. Please select a feature branch:"
+  echo "$FEATURE_BRANCHES"
+
+  # Prompt the user to select a feature branch
+  read -p "Enter the name of the feature branch: " FEATURE_BRANCH
+
+  # Check if the entered branch exists
+  if ! git show-ref --verify --quiet refs/heads/"$FEATURE_BRANCH"; then
+    echo "Branch '$FEATURE_BRANCH' does not exist."
+    exit 1
+  fi
+else
+  FEATURE_BRANCH=$CURRENT_BRANCH
 fi
 
-FEATURE_BRANCH=$1
 SESSION_BRANCH="session-$(date +'%Y-%m-%d_%H-%M')"
 
 # Create a new temporary branch from the feature branch
