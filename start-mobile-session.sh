@@ -35,8 +35,8 @@ SESSION_BRANCH="session-$(date +'%Y-%m-%d_%H-%M')"
 git checkout -b "$SESSION_BRANCH" "$FEATURE_BRANCH"
 echo "Created and switched to new branch: $SESSION_BRANCH"
 
-# Set OLLAMA API BASE variable for aider (replace '{HOSTNAME}' with the actual hostname)
-export OLLAMA_API_BASE=http://{HOSTNAME}:11434
+# Set OLLAMA API BASE variable for aider using HOSTNAME variable
+export OLLAMA_API_BASE=http://$HOSTNAME:11434
 
 # Open aider in mobile notification mode using devstral AI
 aider --mobile-notification-mode --ai devstral
