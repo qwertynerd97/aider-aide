@@ -1,3 +1,4 @@
 # Ignore spec.md and tasks.md files
 spec.md
 tasks.md
+.aider*
