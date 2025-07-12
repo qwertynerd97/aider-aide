@@ -23,15 +23,15 @@
 
 ### Start Mobile Coding Session
 
-- [ ] Create script to start mobile coding session
-  - [ ] create a new, temporary branch (this will enable easy code review of all the code created in the session)
-    - [ ] The temporary branch should branch off from an open feature branch (which is formatted as feature-FEATURE-NAME)
-    - [ ] The temporary branch should be named in the format of session-DATETIME
-  - [ ] switch to the new branch
-  - [ ] set OLLAMA URL variable for aider
-  - [ ] open aider in mobile notification mode, using the devstral AI
-  - [ ] add planning/tasks.md to aider
-  - [ ] have aider tell me the open tasks
+- [x] Create script to start mobile coding session
+  - [x] create a new, temporary branch (this will enable easy code review of all the code created in the session)
+    - [x] The temporary branch should branch off from an open feature branch (which is formatted as feature-FEATURE-NAME)
+    - [x] The temporary branch should be named in the format of session-DATETIME
+  - [x] switch to the new branch
+  - [x] set OLLAMA URL variable for aider
+  - [x] open aider in mobile notification mode, using the devstral AI
+  - [x] add planning/tasks.md to aider
+  - [x] have aider tell me the open tasks
 
 ### Start Desktop Coding Session
 
@@ -39,7 +39,10 @@
 
 ### Finish Coding Session
 
-- [ ] Create script to finish coding session
+- [x] Create script to finish coding session
+  - [x] Fix lingering \n in `COMMIT_MESSAGES`
+  - [x] Make sure commit message includes user summary
+  - [x] Get commit message to properly track back to the parent branch
 
 ### Review and Finish Feature
 
