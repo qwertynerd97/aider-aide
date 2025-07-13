@@ -33,14 +33,11 @@ SESSION_BRANCH="session-$(date +'%Y-%m-%d_%H-%M')"
 
 # Create a new temporary branch from the feature branch
 git checkout -b "$SESSION_BRANCH" "$FEATURE_BRANCH"
+git push
 echo "Created and switched to new branch: $SESSION_BRANCH"
 
-# Set OLLAMA URL variable for aider (replace 'your_ollama_url' with the actual URL)
-export OLLAMA_URL="your_ollama_url"
+# Set OLLAMA API BASE variable for aider using gold-dragon.lan
+export OLLAMA_API_BASE=http://gold-dragon.lan:11434
 
 # Open aider in mobile notification mode using devstral AI
-aider --mobile-notification-mode --ai devstral
-
-# Add planning/tasks.md to aider and have it tell you the open tasks
-aider add planning/tasks.md
-aider ask "What are the open tasks?"
+aider --model ollama_chat/devstral:latest --notifications --load mobile-session.templates/load-commands.md

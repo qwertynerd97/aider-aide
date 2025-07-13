@@ -27,9 +27,6 @@ sed -i "s/PROJECT_NAME/$PROJECT_NAME/g" README.md
 cp $TEMPLATE_DIR/LICENSE.template LICENSE
 
 mkdir -p planning
-cp $TEMPLATE_DIR/planning/spec.md.template planning/spec.md
-sed -i "s/PROJECT_NAME/$PROJECT_NAME/g" planning/spec.md
-
 cp $TEMPLATE_DIR/planning/tasks.md.template planning/tasks.md
 
 cp $TEMPLATE_DIR/.gitignore.template .gitignore
