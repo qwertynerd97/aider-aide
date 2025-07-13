@@ -36,8 +36,8 @@ git checkout -b "$SESSION_BRANCH" "$FEATURE_BRANCH"
 git push
 echo "Created and switched to new branch: $SESSION_BRANCH"
 
-# Set OLLAMA API BASE variable for aider using gold.dragon.lan
-export OLLAMA_API_BASE=http://gold.dragon.lan:11434
+# Set OLLAMA API BASE variable for aider using gold-dragon.lan
+export OLLAMA_API_BASE=http://gold-dragon.lan:11434
 
 # Open aider in mobile notification mode using devstral AI
 aider --model ollama_chat/devstral:latest --notifications --load mobile-session.templates/load-commands.md
