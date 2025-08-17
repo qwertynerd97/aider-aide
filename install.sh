@@ -19,7 +19,7 @@ backup_files() {
 # Install scripts and templates
 install_scripts() {
   # List of scripts to install
-  SCRIPTS=("create-project.sh" "start-mobile-session.sh" "end-session.sh")
+  SCRIPTS=("create-project.sh" "start-mobile-session.sh" "end-session.sh" "create-feature.sh")
 
   for script in "${SCRIPTS[@]}"; do
     if [ -f "$TEMPLATE_DIR/$script" ]; then
@@ -42,6 +42,17 @@ install_scripts() {
       echo "Template directory $dir not found in $TEMPLATE_DIR"
     fi
   done
+
+  # Copy additional templates and files
+  if [ -f "$TEMPLATE_DIR/create-feature.templates/load-commands.md" ]; then
+    cp "$TEMPLATE_DIR/create-feature.templates/load-commands.md" "$INSTALL_DIR/"
+    echo "Installed create-feature.templates/load-commands.md to $INSTALL_DIR"
+  fi
+
+  if [ -f "$TEMPLATE_DIR/planning/install-aide.spec.md" ]; then
+    cp "$TEMPLATE_DIR/planning/install-aide.spec.md" "$INSTALL_DIR/"
+    echo "Installed planning/install-aide.spec.md to $INSTALL_DIR"
+  fi
 }
 
 # Main function
@@ -53,7 +64,7 @@ main() {
   fi
 
   # Backup existing files in the installation directory
-  backup_files "$INSTALL_DIR/create-project.sh" "$INSTALL_DIR/start-mobile-session.sh" "$INSTALL_DIR/end-session.sh"
+  backup_files "$INSTALL_DIR/create-project.sh" "$INSTALL_DIR/start-mobile-session.sh" "$INSTALL_DIR/end-session.sh" "$INSTALL_DIR/create-feature.sh"
 
   # Install scripts and templates
   install_scripts
