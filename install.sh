@@ -26,6 +26,9 @@ install_scripts() {
       cp "$TEMPLATE_DIR/$script" "$INSTALL_DIR/"
       chmod +x "$INSTALL_DIR/$script"
       echo "Installed $script to $INSTALL_DIR"
+
+      # Create symbolic links without the .sh extension
+      ln -sf "$INSTALL_DIR/$script" "$INSTALL_DIR/${script%.sh}"
     else
       echo "Script $script not found in $TEMPLATE_DIR"
     fi
@@ -42,6 +45,17 @@ install_scripts() {
       echo "Template directory $dir not found in $TEMPLATE_DIR"
     fi
   done
+
+  # Copy additional templates and files
+  if [ -f "$TEMPLATE_DIR/create-feature.templates/load-commands.md" ]; then
+    cp "$TEMPLATE_DIR/create-feature.templates/load-commands.md" "$INSTALL_DIR/"
+    echo "Installed create-feature.templates/load-commands.md to $INSTALL_DIR"
+  fi
+
+  if [ -f "$TEMPLATE_DIR/planning/install-aide.spec.md" ]; then
+    cp "$TEMPLATE_DIR/planning/install-aide.spec.md" "$INSTALL_DIR/"
+    echo "Installed planning/install-aide.spec.md to $INSTALL_DIR"
+  fi
 }
 
 # Main function
